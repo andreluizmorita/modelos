@@ -101,75 +101,103 @@ angular.module('starter.services', [])
         userId:1001,
         name: 'André Morita',
         lastText: 'Status',
-        face: './img/contatos/1.png',
+        face: './img/contatos/1001.jpg',
       }
     ],
     messages : [{
       userId: 0,
+      name: 'Ben Sparrow',
       text: 'Hi',
-      time: '13:34'
+      time: '13:34',
+      face: './img/contatos/1.png',
+      chatdirection: 'chat-message-right',
+      statusMessage: 'ion-ios-checkmark ion-positive'
     }, {
       userId: 1001,
       text: 'Hi. How are you?',
-      time: '13:35'
+      time: '13:35',
+      face: './img/contatos/1.png',
+      chatdirection: 'chat-message-left',
+      statusMessage: 'ion-ios-checkmark ion-positive'
     }, {
       userId: 0,
+      name: 'Ben Sparrow',
       text: 'Im fine',
-      time: '13:35'
+      time: '13:35',
+      face: './img/contatos/1.png',
+      chatdirection: 'chat-message-right',
+      statusMessage: 'ion-ios-checkmark ion-positive'
     }, {
       userId: 1001,
+      name: 'André Morita',
       text: 'Talk me about your projects',
-      time: '13:36'
+      time: '13:36',
+      face: './img/contatos/1001.jpg',
+      chatdirection: 'chat-message-left',
+      statusMessage: 'ion-ios-checkmark ion-positive'
     }, {
       userId: 1001,
+      name: 'André Morita',
       text: 'Im very very busy because development many projects',
-      time: '13:36'
+      time: '13:36',
+      face: './img/contatos/1001.jpg',
+      chatdirection: 'chat-message-left',
+      statusMessage: 'ion-ios-checkmark ion-positive'
     }],
   }, {
     id: 1,
     name: 'Max Lynx',
     lastText: 'Hey, it\'s me',
-    face: './img/contatos/2.jpeg'
+    face: './img/contatos/2.jpeg',
+    messages : []
   },{
     id: 2,
     name: 'Adam Bradleyson',
     lastText: 'I should buy a boat',
-    face: './img/contatos/3.jpeg'
+    face: './img/contatos/3.jpeg',
+    messages : []
   }, {
     id: 3,
     name: 'Davy Engone',
     lastText: 'hey you can build this in 20 minutes!!',
-    face: './img/contatos/3.jpeg'
+    face: './img/contatos/3.jpeg',
+    messages : []
   }, {
     id: 4,
     name: 'Mike Harrington',
     lastText: 'This is wicked good ice cream.',
-    face: './img/contatos/1.png'
+    face: './img/contatos/1.png',
+    messages : []
   },{
     id: 5,
     name: 'Mehdi Boujar',
     lastText: 'Hey did you get the final design for the conf',
-    face: './img/contatos/1.png'
+    face: './img/contatos/1.png',
+    messages : []
   }, {
     id: 6,
     name: 'Martine Nze',
     lastText: 'Hey, call your mom whenever possible! :)',
-    face: './img/contatos/2.jpeg'
+    face: './img/contatos/2.jpeg',
+    messages : []
   },{
     id: 7,
     name: 'Maxime Czch',
     lastText: 'One day you should be able to write my name',
-    face: './img/contatos/1.png'
+    face: './img/contatos/1.png',
+    messages : []
   }, {
     id: 8,
     name: 'Alex Aleksanyan',
     lastText: 'hey you can build this in 20 minutes!!',
-    face: './img/contatos/3.jpeg'
+    face: './img/contatos/3.jpeg',
+    messages : []
   }, {
     id: 9,
     name: 'Yann Buydens',
     lastText: 'Hey man I am in front of your office.',
-    face: './img/contatos/1.png'
+    face: './img/contatos/1.png',
+    messages : []
   }];
 
   return {
@@ -186,26 +214,27 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    save: function(conversaId, message){
+      for (var i = 0; i < conversas.length; i++) {
+        if (conversas[i].id === parseInt(conversaId)) {
+          conversaData = conversas[i];
+        }
+      }
+      conversaData.messages.push(message);
     }
   };
 })
 .factory('Eventos', function() {
   var eventos = [{
-    id: 50,
-    titulo: 'Buscar do trabalho',
-    descricao: 'Ir ao metrô Conceição para pegar uma carona pra casa',
-    capa: './img/eventos/metro.jpg',
-    icon: 'ion-android-bus',
-    inicio: '17:50',
-    hora: '18:00'
-  },{
     id: 1,
     titulo: 'Café da manhã',
     descricao: 'Encontro pra tomar um café e conversar',
     capa: './img/eventos/coffee.jpg',
     icon: 'ion-coffee',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 2,
     titulo: 'Show de Rock',
@@ -213,7 +242,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/party.jpg',
     icon: 'ion-star',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 51,
     titulo: 'Happy hour',
@@ -221,7 +251,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/beer.jpg',
     icon: 'ion-beer',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 4,
     titulo: 'Fifa desafio',
@@ -229,7 +260,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/games.jpg',
     icon: 'ion-ios-game-controller-b',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 5,
     titulo: 'Churrasco',
@@ -237,7 +269,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/churrasco.jpg',
     icon: 'ion-flame',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 52,
     titulo: 'Fifa desafio',
@@ -245,7 +278,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/games.jpg',
     icon: 'ion-ios-game-controller-b',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventos'
   },{
     id: 7,
     titulo: 'Churrasco',
@@ -253,7 +287,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/churrasco.jpg',
     icon: 'ion-flame',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    typo: 'eventos'
   }];
 
   return {
@@ -270,6 +305,10 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    add: function(evento){
+      eventos.push(evento);
+      return null;
     }
   };
 })
@@ -282,7 +321,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/coffee.jpg',
     icon: 'ion-coffee',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventosabertos'
   },{
     id: 32,
     titulo: 'Show de Rock da 89',
@@ -290,7 +330,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/party.jpg',
     icon: 'ion-star',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventosabertos'
   },{
     id: 33,
     titulo: 'Beber com os amigos',
@@ -298,7 +339,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/beer.jpg',
     icon: 'ion-beer',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventosabertos'
   },{
     id: 34,
     titulo: 'Desafio de Lol',
@@ -306,7 +348,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/games.jpg',
     icon: 'ion-ios-game-controller-b',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventosabertos'
   },{
     id: 35,
     titulo: 'Churrasco de aniversário',
@@ -314,15 +357,19 @@ angular.module('starter.services', [])
     capa: './img/eventos/churrasco.jpg',
     icon: 'ion-flame',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'eventosabertos'
   }];
 
   return {
     all: function() {
       return eventosabertos;
     },
-    remove: function(evento) {
-      eventosabertos.splice(eventosabertos.indexOf(evento), 1);
+    add: function(eventosaberto) {
+      eventosabertos.push(eventosaberto);
+    },
+    remove: function(eventosaberto) {
+      eventosabertos.splice(eventosabertos.indexOf(eventosaberto), 1);
     },
     get: function(eventoId) {
       for (var i = 0; i < eventosabertos.length; i++) {
@@ -342,7 +389,8 @@ angular.module('starter.services', [])
     capa: './img/eventos/metro.jpg',
     icon: 'ion-android-bus',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'meuseventos'
   },{
     id: 51,
     titulo: 'Happy hour',
@@ -350,15 +398,17 @@ angular.module('starter.services', [])
     capa: './img/eventos/beer.jpg',
     icon: 'ion-beer',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'meuseventos'
   },{
     id: 52,
-    titulo: 'Fifa desafio',
-    descricao: 'Quem é o melhor no FIFA? Desafio',
-    capa: './img/eventos/games.jpg',
-    icon: 'ion-ios-game-controller-b',
+    titulo: 'Treino de basquete',
+    descricao: 'Treino no Sesc de basquete em equipe',
+    capa: './img/eventos/basquete.jpg',
+    icon: 'ion-ios-basketball',
     inicio: '17:50',
-    hora: '18:00'
+    hora: '18:00',
+    tipo: 'meuseventos'
   }];
 
   return {
@@ -368,6 +418,9 @@ angular.module('starter.services', [])
     remove: function(meusevento) {
       meuseventos.splice(meuseventos.indexOf(meusevento), 1);
     },
+    add: function(meusevento) {
+      meuseventos.push(meusevento);
+    },
     get: function(meuseventoId) {
       for (var i = 0; i < meuseventos.length; i++) {
         if (meuseventos[i].id === parseInt(meuseventoId)) {
@@ -375,6 +428,31 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    update: function(meusevento) {
+
+    },
+    save: function(meuevento){
+
     }
   };
 });
+
+angular.module('ionic.utils', [])
+
+.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    }
+  }
+}]);

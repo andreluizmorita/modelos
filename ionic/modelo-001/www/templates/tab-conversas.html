@@ -7,7 +7,7 @@
   
   <ion-content>
     <ion-list show-delete="showDelete">
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversa in conversas" type="item-text-wrap" href="#/tab/conversar/{{conversa.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversa in conversas | orderBy:'name'" type="item-text-wrap" href="#/tab/conversar/{{conversa.id}}">
         <img ng-src="{{conversa.face}}">
         <h2>{{conversa.name}}</h2>
         <p>{{conversa.lastText}}</p>

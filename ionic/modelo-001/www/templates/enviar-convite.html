@@ -11,7 +11,7 @@
   </div>
   <ion-content class="has-header has-subheader">
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contato in contatos | filter:contatoFilter" type="item-text-wrap" >
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contato in contatos | orderBy:'name' | filter:contatoFilter" type="item-text-wrap" >
         <img ng-src="{{contato.face}}">
         <h2>{{contato.name}}</h2>
         <!-- i class="icon ion-ios-circle-outline"></i> -->

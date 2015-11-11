@@ -6,14 +6,14 @@
   </ion-header-bar>
   <ion-content>
     <ion-list show-delete="showDelete">
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="evento in eventos" type="item-text-wrap">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="evento in eventos | orderBy:'titulo'" type="item-text-wrap">
         <img ng-src="{{evento.capa}}">
         <h2>{{evento.titulo}} </h2>
         <p>{{evento.descricao}}</p>
         <ion-icon class="ion-ios-stopwatch-outline"> {{evento.inicio}}</ion-icon> - <ion-icon class="ion-android-time"> {{evento.hora}}</ion-icon>
         <i class="icon {{evento.icon}}"></i>
-        <ion-option-button class="button-royal ion-eye"></ion-option-button>
-        <ion-option-button class="button-balanced ion-person-add" ng-click="openInvite()"></ion-option-button>
+        <ion-option-button class="button-positive ion-eye"></ion-option-button>
+        <ion-option-button class="button-positive ion-person-add" ng-click="openInvite()"></ion-option-button>
         <ion-option-button class="button-assertive ion-trash-b" ng-click="showConfirm(evento)"></ion-option-button>
       </ion-item>
     </ion-list>

@@ -1,7 +1,6 @@
 <ion-view>
   <ion-header-bar align-title="center" class="bar-header bar-positive">
       <h1 class="title">Contatos</h1>
-      <button class="button button-icon icon ion-android-calendar" ng-click="openModal()"></button>
   </ion-header-bar>
   <div class="bar bar-subheader item-input-inset">
     <label class="item-input-wrapper">
@@ -11,12 +10,14 @@
   </div>
   <ion-content class="has-header has-subheader">
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="listacontato in listacontatos | filter:buscar" type="item-text-wrap" href="#/conversar/{{listacontato.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="listacontato in listacontatos | orderBy:'name' | filter:buscar" type="item-text-wrap" href="#/conversar/{{listacontato.id}}">
         <img ng-src="{{listacontato.face}}">
         <h2>{{listacontato.name}}</h2>
         <ion-option-button class="button-assertive ion-trash-b" ng-click="remove(listacontato)"></ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
-  <button class="round-overlay-button bottom-right positive button button-icon icon ion-plus light has-footer "></button>
+  <a href="#/tabmenu/membros">
+    <button class="round-overlay-button bottom-right positive button button-icon icon ion-plus light has-footer " ></button>
+  </a>
 </ion-view>

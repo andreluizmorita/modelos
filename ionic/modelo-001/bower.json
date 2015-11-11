@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "font-awesome": "fontawesome#~4.4.0",
-    "ngCordova": "~0.1.22-alpha"
+    "ngCordova": "~0.1.22-alpha",
+    "angular-material": "~0.11.4"
   }
 }

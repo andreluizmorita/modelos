@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('app', ['ionic','ionic.utils' ,'starter.controllers', 'starter.services', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $localstorage) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,11 @@ angular.module('app', ['ionic', 'starter.controllers', 'starter.services', 'ngCo
       StatusBar.styleLightContent();
     }
   });
+
+  $localstorage.set('user.name', 'André Morita');
+  $localstorage.set('user.status', 'Hoje acordei animado');
+  $localstorage.set('user.face', './img/contatos/1001.jpg');
+  $localstorage.set('user.lastaccess', '11:34');
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -33,6 +38,23 @@ angular.module('app', ['ionic', 'starter.controllers', 'starter.services', 'ngCo
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"
+  })
+
+
+  .state('menuleft', {
+      url : '/menuleft',
+      templateUrl : 'templates/menus/menuleft.html',
+      abstract : true,
+      controller : 'MenuleftController'
+  })
+  .state('menuleft.membros', {
+      url: '/membros',
+      views: {
+          'view-menuleft': {
+              templateUrl: 'templates/membros.html',
+              controller : 'MembrosController'
+          }
+      }
   })
 
   .state('tab.eventos', {
@@ -108,6 +130,11 @@ angular.module('app', ['ionic', 'starter.controllers', 'starter.services', 'ngCo
     templateUrl: 'templates/conversar.html',
     controller: 'ConversarController'
   })
+  .state('conversas.perfil', {
+    url: '/conversar/:conversaId',
+    templateUrl: 'templates/conversas-perfil.html',
+    controller: 'ConversasPerfilController'
+  })
 
   .state('tab.configuracoes', {
     url: '/configuracoes',
@@ -119,6 +146,51 @@ angular.module('app', ['ionic', 'starter.controllers', 'starter.services', 'ngCo
     }
   });
 
-  $urlRouterProvider.otherwise('/tab/eventos');
+  //$urlRouterProvider.otherwise('/tab/eventos');
 
+})
+.directive('ngEnter', function() {
+  return function(scope, element, attrs) {
+      element.bind("keydown keypress", function(event) {
+          if(event.which === 13) {
+                  scope.$apply(function(){
+                          scope.$eval(attrs.ngEnter);
+                  });
+                  
+                  event.preventDefault();
+          }
+      });
+  };
+})
+.directive('subheaderMenu', [function(){
+    return {
+        restrict : "E",
+        templateUrl : "templates/menus/tabmenu.html"
+      }
+}])
+.directive('map', function() {
+    return {
+        restrict: 'A',
+        link:function(scope, element, attrs){
+
+          var zValue = scope.$eval(attrs.zoom);
+          var lat = scope.$eval(attrs.lat);
+          var lng = scope.$eval(attrs.lng);
+
+
+          var myLatlng = new google.maps.LatLng(lat,lng),
+          mapOptions = {
+              zoom: zValue,
+              center: myLatlng
+          },
+          map = new google.maps.Map(element[0],mapOptions),
+          marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                draggable:true
+          });
+
+
+        }
+    };
 });

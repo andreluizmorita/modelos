@@ -11,12 +11,14 @@
   </div>
   <ion-content class="has-header has-subheader">
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="eventosaberto in eventosabertos | filter:buscar" type="item-text-wrap" href="#/tab/eventosaberto/{{eventosaberto.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="eventosaberto in eventosabertos | orderBy:'titulo' | filter:buscar" type="item-text-wrap">
         <img ng-src="{{eventosaberto.capa}}">
         <h2>{{eventosaberto.titulo}}</h2>
         <p>{{eventosaberto.descricao}}</p>
         <i class="icon {{eventosaberto.icon}}"></i>
-        <ion-option-button class="button-balanced ion-plus-circled" ng-click="add(eventosaberto)"></ion-option-button>
+        <ion-option-button class="button-positive ion-eye"></ion-option-button>
+        <ion-option-button class="button-positive ion-person-add" ng-click="openInvite()"></ion-option-button>
+        <ion-option-button class="button-balanced ion-ios-plus" ng-click="abertoConfirm(eventosaberto)"></ion-option-button>      
       </ion-item>
     </ion-list>
   </ion-content>
