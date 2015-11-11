@@ -1,0 +1,19 @@
+<ion-view>
+  <ion-header-bar align-title="center" class="bar-header bar-positive">
+    <button class="button button-icon ion-ios-minus" ng-click="edit()"></button>
+    <h1 class="title">Conversas</h1>
+    <button class="button button-icon ion-ios-chatboxes" ng-click="openModal()"></button>
+  </ion-header-bar>
+  
+  <ion-content>
+    <ion-list show-delete="showDelete">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversa in conversas" type="item-text-wrap" href="#/tab/conversar/{{conversa.id}}">
+        <img ng-src="{{conversa.face}}">
+        <h2>{{conversa.name}}</h2>
+        <p>{{conversa.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-delete-button class="ion-minus-circled" ng-click="remove(conversa)"></ion-delete-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

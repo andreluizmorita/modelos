@@ -1,0 +1,71 @@
+<ion-view>
+  <ion-header-bar align-title="center" class="bar-header bar-positive">
+    <h1 class="title">Configurações</h1>
+  </ion-header-bar>
+  <ion-content padding="false">
+
+	<ion-list>
+		<ion-toggle class="item-icon-left" ng-model="configuracoes.meucontato">
+			<i class="icon ion-person"></i>
+			Compartilha contato
+		</ion-toggle>
+
+		<ion-item class="item-icon-left" href="#">
+		  <i class="icon ion-person-stalker"></i>Convites
+		  <span class="badge badge-assertive">0</span>
+		</ion-item>
+		<div class="item item-divider">
+		  Rede, localização e notificações
+		</div>	
+		<ion-toggle class="item-icon-left" ng-model="configuracoes.conexao">
+			<i class="icon ion-wifi"></i>
+			Verificar conexão
+		</ion-toggle>
+		<ion-toggle class="item-icon-left" ng-model="configuracoes.localizacao">
+			<i class="icon ion-ios-location"></i>
+			Verificar localização
+		</ion-toggle>
+		<ion-toggle class="item-icon-left" ng-model="configuracoes.geolocalizacao">
+			<i class="icon ion-pinpoint"></i>
+			Verificar geolocalização
+		</ion-toggle>
+		<ion-toggle class="item-icon-left" ng-model="configuracoes.notificacoes">
+			<i class="icon ion-alert"></i>
+			Notificações
+		</ion-toggle>
+		<div class="item item-divider">
+		 	O que eu gosto
+		</div>
+
+		<ion-item class="item-icon-left" href="#">
+		  <i class="icon ion-ios-film"></i>Séries
+		  <span class="item-note">
+		    Blue, yellow, pink
+		  </span>
+		</ion-item>
+
+		<ion-item class="item-icon-left" href="#">
+		  <i class="icon ion-music-note"></i>
+		  Música
+		  <span class="item-note">
+		    JT
+		  </span>
+		</ion-item>
+
+		<ion-item class="item-icon-left" href="#">
+		  <i class="icon ion-ios-game-controller-b"></i>
+		  Jogos
+		  <span class="item-note">
+		    Super Mario
+		  </span>
+		</ion-item>
+
+		<ion-item class="item-icon-left item-icon-right" href="#">
+		  <i class="icon ion-bag"></i>
+		  Produtos
+		  <i class="icon ion-arrow-right-c"></i>
+		</ion-item>
+
+		</ion-list>
+  </ion-content>
+</ion-view>

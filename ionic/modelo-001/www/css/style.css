@@ -1,0 +1,61 @@
+/* Empty. Add your own CSS if you like */
+
+input[type='search']{
+  width: 100%;
+  background-color: #eee;
+}
+.has-chatbar-subheader { top: 85px; }
+
+.chat-content { background: url('../img/conversar/p6/p6.png') repeat; }
+
+.chatbar { 
+	
+}
+.chatbar-subheader {
+  	background: #eee; 
+	height: 30px;
+}
+.chatbar-subheader h3 { position: relative; text-align: right; padding: 0; font-size: 12px; font-weight: normal; }
+.chatbar-subheader h3 .chatbar-title , .chatbar-subheader h3 .chatbar-time{ color: #888; display: inline-block; font-weight: normal; }
+.chatbar .chatbar-title { color: #ccc; }
+.chatbar-profile img.chatbar-thumb {
+    position: absolute;
+    top: -40px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+	border: 2px solid #fff;
+}
+.chatbar .button.button-icon i { font-size: 24px;  }
+
+.chat-message { position: relative; border: 1px solid #d8d8d8; background: #eee; box-shadow: 0px 3px 2px  #ddd; color: #555; font-size: 15px; padding: 10px 15px 5px 15px; border-radius: 10px; margin-top: 15px; }
+
+.chat-message-right{ padding: 10px 60px 5px 15px; margin-left: 20px; background: #f8f8f8; }
+.chat-message-left { padding: 10px 15px 5px 60px; margin-right: 20px; }
+
+.chat-message-right img.chat-message-thumb {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+	border: 2px solid #fff;
+}
+.chat-message-left img.chat-message-thumb {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+	border: 2px solid #fff;
+}
+.chat-message-description { display: block; margin-top: 10px; }
+.chat-message-title { font-weight: normal; font-size: 12px; color: #555; }
+.chat-message-status { display: inline-block; float: right; right: 15px; }
+.chat-input { padding: 10px; background: transparent; }
+.chat-input input { height: 30px; color: #666; }
+
+.chat-input .chat-send { font-size: 20px; border-radius: 50%; border: 1px solid #0c60ee; background: #0c60ee; color: #fff; position: absolute; width: 50px; height: 50px; top: 0px; right: 10px; }

@@ -1,0 +1,44 @@
+<ion-view>
+  <ion-header-bar align-title="center" class="bar-stable bar-positive chatbar">
+    <button class="button button-icon icon " ng-click="goBack()">
+      <i class="ion-android-arrow-dropleft-circle"></i>
+    </button>
+    <h1 class="title"> {{conversa.name}} </h1>
+    <button class="button button-icon icon ion-paperclip"></button>
+  </ion-header-bar>
+  <ion-header-bar class="bar bar-subheader chatbar chatbar-subheader">
+      <div class="chatbar-profile">
+        <h3><img class="chatbar-thumb" ng-src="{{conversa.face}}"><span class="chatbar-title"><i class="fa fa-list"></i> Título da conversa</span> <span class="chatbar-time"><i class="fa fa-clock-o"></i> 13:30</span></h3>
+      </div>
+  </ion-header-bar>
+  <ion-content padding="true" class="chat-content has-chatbar-subheader">
+    
+    <div class="chat-content">
+      <p class="chat-message chat-message-left">
+        <img class="chat-message-thumb" ng-src="{{conversa.face}}">
+        {{conversa.lastText}}
+        <strong class="chat-message-description">
+          <span class="chat-message-title"><i class="ion-ios-person"></i> {{conversa.name}} &nbsp; &nbsp; <i class="ion-ios-clock-outline"></i> 13:30</span>
+          <span class="chat-message-status"><i class="ion-ios-checkmark ion-positive"></i></span>
+        </strong>
+      </p>
+      <p class="chat-message chat-message-right">
+        <img class="chat-message-thumb" ng-src="{{conversa.face}}">
+        {{conversa.lastText}}
+        <strong class="chat-message-description">
+          <span class="chat-message-title"><i class="ion-ios-person"></i> {{conversa.name}} &nbsp; &nbsp; <i class="ion-ios-clock-outline"></i> 13:30</span>
+          <span class="chat-message-status"><i class="ion-ios-checkmark ion-positive"></i></span>
+        </strong>
+      </p>
+    </div>
+    
+  </ion-content>
+  <div class="bar bar-footer chat-input">
+    <label class="item-input-wrapper">
+      <i class="icon fa fa-keyboard-o placeholder-icon"></i>
+      <input type="search" placeholder="Digite aqui ...">
+      <button class="chat-send "><i class="ion-paper-airplane"></i></button>
+    </label>
+  </div>
+   
+</ion-view>

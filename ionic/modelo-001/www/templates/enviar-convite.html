@@ -1,0 +1,27 @@
+<ion-modal-view>
+  <div class="bar bar-header bar-balanced">
+    <h1 class="title">Convidar para o evento</h1>
+    <button class="button button-clear icon ion-close-circled" ng-click="closeInvite()"></button>
+  </div>
+  <div class="bar bar-subheader item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" ng-model="contatoFilter" placeholder="Buscar contato">
+    </label>
+  </div>
+  <ion-content class="has-header has-subheader">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contato in contatos | filter:contatoFilter" type="item-text-wrap" >
+        <img ng-src="{{contato.face}}">
+        <h2>{{contato.name}}</h2>
+        <!-- i class="icon ion-ios-circle-outline"></i> -->
+        <div class="button-positive">
+          <i class="icon ion-balanced ion-ios-checkmark"></i>
+
+        </div>
+        <ion-option-button class="button-positive" ng-click="convidar(contato)"></ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-modal-view>

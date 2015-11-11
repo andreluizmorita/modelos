@@ -1,0 +1,15 @@
+<ion-view>
+  <ion-header-bar align-title="center" class="bar-stable bar-positive">
+    <button class="button button-icon icon ion-ios-arrow-left" ng-click="goBack()"></button>
+    <h1 class="title">
+      {{contato.name}}
+    </h1>
+    <button class="button button-icon icon ion-plus"></button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <img ng-src="{{contato.face}}" style="width: 64px; height: 64px">
+    <p>
+      {{contato.lastText}}
+    </p>
+  </ion-content>
+</ion-view>

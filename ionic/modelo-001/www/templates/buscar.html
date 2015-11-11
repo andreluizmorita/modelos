@@ -1,0 +1,23 @@
+<ion-modal-view>
+  <div class="bar bar-header bar-royal">
+    <h1 class="title">Buscar eventos</h1>
+    <button class="button button-clear icon ion-close-circled" ng-click="closeModal()"></button>
+  </div>
+  <div class="bar bar-subheader item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" ng-model="buscar" placeholder="Buscar evento">
+    </label>
+  </div>
+  <ion-content class="has-header has-subheader">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="eventosaberto in eventosabertos | filter:buscar" type="item-text-wrap" href="#/tab/eventosaberto/{{eventosaberto.id}}">
+        <img ng-src="{{eventosaberto.capa}}">
+        <h2>{{eventosaberto.titulo}}</h2>
+        <p>{{eventosaberto.descricao}}</p>
+        <i class="icon {{eventosaberto.icon}}"></i>
+        <ion-option-button class="button-balanced ion-plus-circled" ng-click="add(eventosaberto)"></ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>
