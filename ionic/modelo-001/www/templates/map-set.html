@@ -4,14 +4,21 @@
             <input type="text" ng-model="user.desc" placeholder="Description">
         </label>
     </div> -->
-    <ion-content padding="false" scroll="false">
-        <div id="map" lat="-23.6519571" lng="-46.6594607" zoom="15" map>
-            TESTE
-        </div>
+  <div class="bar bar-header item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" ng-model="endereco" name="endereco" placeholder="Preencha aqui o endereço">
+    </label>
+    <button class="button button-positive button-small" ng-click="localizar()" ng-disabled="running">
+      Buscar
+    </button>
+  </div>
+    <ion-content padding="false" scroll="false" class="has-header">
+        <div id="map" data-tap-disabled="true"></div>
     </ion-content>
     <ion-footer-bar class="bar-energized">
-        <button class="button button-clear" ng-click="closeMap()"><i class="icon ion-ios-close"></i></button>
-        <h1 class="title">Definir local</h1>
-        <button class="button button-clear" ng-click="done()"><i class="icon ion-ios-checkmark"></i></button>
+        <h1>{{endereco}}</h1>
+        <button class="button button-clear" ng-click="closeMap()"><i class="icon ion-ios-close"></i> Cancelar</button>
+        <button class="button button-clear" ng-click="doneMap()"> Adicionar<i class="icon ion-ios-checkmark"></i></button>
     </ion-footer-bar>
 </ion-view>

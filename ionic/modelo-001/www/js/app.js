@@ -51,8 +51,26 @@ angular.module('app', ['ionic','ionic.utils' ,'starter.controllers', 'starter.se
       url: '/membros',
       views: {
           'view-menuleft': {
-              templateUrl: 'templates/membros.html',
+              templateUrl: 'templates/menuleft-membros.html',
               controller : 'MembrosController'
+          }
+      }
+  })
+  .state('menuleft.map', {
+      url: '/map',
+      views: {
+          'view-menuleft': {
+              templateUrl: 'templates/menuleft-mapmodel.html',
+              controller : 'MapController'
+          }
+      }
+  })
+  .state('menuleft.mapcomplete', {
+      url: '/mapcomplete',
+      views: {
+          'view-menuleft': {
+              templateUrl: 'templates/menuleft-mapcomplete.html',
+              controller : 'PlaceController'
           }
       }
   })

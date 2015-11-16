@@ -15,13 +15,13 @@
     <ion-content has-header="true">
       <ul class="list">
         <a ui-sref="login" class="item" ng-click="toggleLeft()">Login</a>
-        <a ui-sref="tabmenu.membros" class="item" ng-click="toggleLeft()">Membros</a>
-        <a ui-sref="tabmenu.conversas" class="item" ng-click="toggleLeft()">Conversas</a>
-        <a ui-sref="tabmenu.configuracoes" class="item" ng-click="toggleLeft()">Configurações</a>
+        <a ui-sref="menuleft.contatos" class="item" ng-click="toggleLeft()">Membros</a>
+        <a ui-sref="menuleft.map" class="item" ng-click="toggleLeft()">Mapa</a>
+        <a ui-sref="menuleft.mapcomplete" class="item" ng-click="toggleLeft()">Mapa Complete</a>
       </ul>
     </ion-content>
     <ion-footer-bar class="bar bar-footer">
-      <a class="button button-fullwidth" ui-sref="snd.policy" ng-click="toggleLeft()">Sobre</a>
+      <button class="button button-block button-positive" ui-sref="snd.policy" ng-click="toggleLeft()">Sobre</button>
     </ion-footer-bar>
   </ion-side-menu>
 </ion-side-menus>

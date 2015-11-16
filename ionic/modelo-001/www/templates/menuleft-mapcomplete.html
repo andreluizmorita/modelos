@@ -1,0 +1,17 @@
+<ion-view title="Buscar">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <div class="bar bar-subheader item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="text" ng-model="endereco" name="endereco" id="endereco" ng-change="fillInAddress()" placeholder="Preencha aqui o endereço">
+    </label>
+    <button class="button button-positive button-small" ng-click="localizar()" ng-disabled="running">
+      Buscar
+    </button>
+  </div>
+    <ion-content padding="false" scroll="false" class="has-subheader">
+        <div id="map" data-tap-disabled="true"></div>
+    </ion-content>
+</ion-view>
