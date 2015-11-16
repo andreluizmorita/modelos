@@ -146,7 +146,7 @@ angular.module('app', ['ionic','ionic.utils' ,'starter.controllers', 'starter.se
     }
   });
 
-  //$urlRouterProvider.otherwise('/tab/eventos');
+  $urlRouterProvider.otherwise('/tab/eventos');
 
 })
 .directive('ngEnter', function() {
