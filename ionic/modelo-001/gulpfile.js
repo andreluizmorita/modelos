@@ -26,6 +26,7 @@ gulp.task('server', function() {
           livereload: true,
           directoryListing: true,
           open: true,
+          port: 8081
         }));
 });
 

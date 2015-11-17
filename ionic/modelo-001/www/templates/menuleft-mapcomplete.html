@@ -5,13 +5,14 @@
   <div class="bar bar-subheader item-input-inset">
     <label class="item-input-wrapper">
       <i class="icon ion-ios-search placeholder-icon"></i>
-      <input type="text" ng-model="endereco" name="endereco" id="endereco" ng-change="fillInAddress()" placeholder="Preencha aqui o endereço">
+      <!-- <input type="text" ng-model="endereco" name="endereco" id="endereco"  placeholder="Preencha aqui o endereço"> -->
+      <input type="text" ng-model="endereco" name="endereco" id="endereco"  placeholder="Preencha aqui o endereço" googleplace/>
     </label>
     <button class="button button-positive button-small" ng-click="localizar()" ng-disabled="running">
       Buscar
     </button>
   </div>
     <ion-content padding="false" scroll="false" class="has-subheader">
-        <div id="map" data-tap-disabled="true"></div>
+        <div id="map" data-tap-disabled="false" on-hold="addOnClick()"></div>
     </ion-content>
 </ion-view>
