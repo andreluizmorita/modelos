@@ -594,6 +594,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaceController', function($scope, $ionicLoading, $cordovaGeolocation){
+<<<<<<< HEAD
   // This example displays an address form, using the autocomplete feature
   // of the Google Places API to help users fill in the information.
 
@@ -629,96 +630,16 @@ angular.module('starter.controllers', [])
       //document.getElementById(component).value = '';
       //document.getElementById(component).disabled = false;
     }
+=======
+>>>>>>> b7c8f4568bca34b231bddc9a39806e6bfc7c4c6a
 
-    // Get each component of the address from the place details
-    // and fill the corresponding field on the form.
-    for (var i = 0; i < place.address_components.length; i++) {
-      var addressType = place.address_components[i].types[0];
-      if (componentForm[addressType]) {
-        var val = place.address_components[i][componentForm[addressType]];
-        document.getElementById(addressType).value = val;
-      }
-    }
-  }
-
-  // Bias the autocomplete object to the user's geographical location,
-  // as supplied by the browser's 'navigator.geolocation' object.
-  function geolocate() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var geolocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        var circle = new google.maps.Circle({
-          center: geolocation,
-          radius: position.coords.accuracy
-        });
-        autocomplete.setBounds(circle.getBounds());
-      });
-    }
-  }
-
-  $ionicLoading.show({
-      template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Localizando...'
-    });
-
-    var posOptions = {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    };
-    
-    var geocoder = new google.maps.Geocoder();
-
-    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-      var lat  = position.coords.latitude;
-      var long = position.coords.longitude;
-       
-      var myLatlng = new google.maps.LatLng(lat, long);
-       
-      var mapOptions = {
-          center: myLatlng,
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      };               
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions); 
-
-      var marker = new google.maps.Marker({
-        position: {lat: lat, lng: long},
-        title: 'Teste',
-        map: map
-      });
-
-      $scope.map = map;   
-      $ionicLoading.hide();           
-         
-    }, function(err) {
-
-      var myLatlng = new google.maps.LatLng(40,-80);
-      
-      var mapOptions = {
-          center: myLatlng,
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      }; 
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions); 
-
-      var marker = new google.maps.Marker({
-        position: {lat: 40, lng: -80},
-        title: 'Teste',
-        map: map
-      });
-
-      $scope.map = map; 
-
-      $ionicLoading.hide();
-      console.log(err);
-    });
+  var geocoder = new google.maps.Geocoder();
 
   $scope.localizar = function () {
     var address = $scope.endereco;
-    
+
+    console.log(address);
+
     geocoder.geocode({'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
 
@@ -739,62 +660,59 @@ angular.module('starter.controllers', [])
       }
     });
   }
+
+
+  //Add single Marker
+  $scope.addOnClick = function(event) {
+      var x = event.gesture.center.pageX;
+      var y = event.gesture.center.pageY-44;
+      var point = new google.maps.Point(x, y);
+      var coordinates = $scope.overlay.getProjection().fromContainerPixelToLatLng(point);
+
+      var marker = new google.maps.Marker({
+          position: coordinates,
+          map: $scope.map
+      });
+
+      marker.id = $scope.markerId;
+      $scope.markerId++;
+      $scope.markers.push(marker);
+
+      $timeout(function(){
+        //Creation of the listener associated to the Markers click
+        google.maps.event.addListener(marker, "click", function (e) {
+          ons.notification.confirm({
+              message: 'Do you want to delete the marker?',
+              callback: function(idx) {
+                  switch(idx) {
+                      case 0:
+                          ons.notification.alert({
+                              message: 'You pressed "Cancel".'
+                          });
+                          break;
+                      case 1:
+                          for (var i = 0; i < $scope.markers.length; i++) {
+                              if ($scope.markers[i].id == marker.id) {
+                                  //Remove the marker from Map                  
+                                  $scope.markers[i].setMap(null);
+
+                                  //Remove the marker from array.
+                                  $scope.markers.splice(i, 1);
+                              }
+                          }
+                          ons.notification.alert({
+                              message: 'Marker deleted.'
+                          });
+                          break;
+                  }
+              }
+          });
+      });
+      },1000);
+
+
+  };
 })
 
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
-      function initialize() {
-        var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
-        
-        var mapOptions = {
-          center: myLatlng,
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map"),
-            mapOptions);
-        
-        //Marker + infowindow + angularjs compiled ng-click
-        var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
-        var compiled = $compile(contentString)($scope);
 
-        var infowindow = new google.maps.InfoWindow({
-          content: compiled[0]
-        });
 
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
-        });
-
-        $scope.map = map;
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-      
-      $scope.centerOnMe = function() {
-        if(!$scope.map) {
-          return;
-        }
-
-        $scope.loading = $ionicLoading.show({
-          content: 'Getting current location...',
-          showBackdrop: false
-        });
-
-        navigator.geolocation.getCurrentPosition(function(pos) {
-          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-          $scope.loading.hide();
-        }, function(error) {
-          alert('Unable to get location: ' + error.message);
-        });
-      };
-      
-      $scope.clickTest = function() {
-        alert('Example of infowindow with ng-click')
-      };
-      
-    });
