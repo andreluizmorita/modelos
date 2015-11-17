@@ -626,8 +626,8 @@ angular.module('starter.controllers', [])
     var place = autocomplete.getPlace();
 
     for (var component in componentForm) {
-      document.getElementById(component).value = '';
-      document.getElementById(component).disabled = false;
+      //document.getElementById(component).value = '';
+      //document.getElementById(component).disabled = false;
     }
 
     // Get each component of the address from the place details

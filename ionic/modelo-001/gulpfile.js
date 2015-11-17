@@ -7,9 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 
-var paths = {
-  sass: ['./scss/**/*.scss']
-};
+
 
 var webserver = require('gulp-webserver');
 var jshint = require("gulp-jshint");
@@ -19,6 +17,12 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var minifyCss = require('gulp-minify-css');
 var concatCss = require('gulp-concat-css');
+
+var paths = {
+  sass: ['./scss/**/*.scss'],
+  sass: ['./less/**/*.scss'],
+
+};
 
 gulp.task('server', function() {
     gulp.src('./')
